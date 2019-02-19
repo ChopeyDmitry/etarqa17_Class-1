@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 public class BoardHelper extends  HelperBase {
 
   public BoardHelper(WebDriver wd) {
@@ -19,6 +21,7 @@ public class BoardHelper extends  HelperBase {
   }
 
   public int PersonalBoardsCount(){
+    wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     WebElement personalBoards =
             wd.findElement(By.xpath("//*[@class='icon-lg icon-member']/../../.."));
     return

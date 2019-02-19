@@ -5,12 +5,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BoardCreationTest extends TestBase {
-  @BeforeMethod
-  public void ensurePreconditions() {
-    if (!app.getSessionHelper().isUserLoggedIn()) {
-      app.getSessionHelper().login();
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if (!app.getSessionHelper().isUserLoggedIn()) {
+            app.getSessionHelper().login();
+        }
     }
-  }
 
   @Test
   public void testBoardCreationFromBody() {
@@ -25,15 +25,17 @@ public class BoardCreationTest extends TestBase {
 
     Assert.assertEquals(after, before+1);
 
-  }
+}
 
-  @Test(enabled = false)
-  public void testBoardCreationFromHeader() {
-    app.clickOnPlusButtonOnHeader();
-    app.getBoardHelper().selectCreateBoard();
-    app.getBoardHelper().addBoardTitle("newBoard" + System.currentTimeMillis());
-    app.getBoardHelper().clickTheCreateButton();
-    app.returnToPreviousPage();
+    @Test//(enabled = false)
+    public void testBoardCreationFromHeader() throws InterruptedException {
+        Thread.sleep(3000);
 
-  }
+        app.clickOnPlusButtonOnHeader();
+        app.getBoardHelper().selectCreateBoard();
+        app.getBoardHelper().addBoardTitle("newBoard" + System.currentTimeMillis());
+        app.getBoardHelper().clickTheCreateButton();
+        app.returnToPreviousPage();
+
+    }
 }
